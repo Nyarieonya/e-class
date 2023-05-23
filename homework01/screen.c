@@ -6,14 +6,14 @@
 #define Screen_Height 20
 
 char Screen_arr[Screen_Height * 100];
-const char* Title = "´ëÇĞ±³¿¡¼­ »ì¾Æ³²±â";
+const char* Title = "ëŒ€í•™êµì—ì„œ ì‚´ì•„ë‚¨ê¸°";
 const char* Command_Text[] = { "1. G a m e  S t a r t", "2. G a m e  A b o u t", "3. G a m e  E x i t" };
-const char* Exit_Text[] = {"Y. Y E S     N. N O       ","°ÔÀÓÀ» Á¾·áÇÏ½Ã°Ú½À´Ï±î?"};
-const char* About_Text[] = { "¸¸µç»ç¶÷ : ¹®¼öÃ¶-202327049", "Ver 0.1", "Q¸¦ ´­·¯ ³ª°¡±â" };
-const char* Story_Number = "ÁÖÀÇ»çÇ× ¹× °ÔÀÓÀÇ ÇÃ·¹ÀÌ ¹æ¹ı";
-const char* Story_Text1[] = {"ÀÌ °ÔÀÓÀº ¸Å¿ì Áö±ØÈ÷ ÁÖ°üÀûÀÌ¸ç ½ÇÁ¦¿Í ´Ù¸¦ ¼ö ÀÖ½À´Ï´Ù. ","½ºÅä¸®Áß ÀÏºÎ´Â °³¹ßÀÚÀÇ ½ÇÈ­¸¦ ¹ÙÅÁÀ¸·Î ¸¸µé¾îÁ³½À´Ï´Ù.", "ÀÌ °ÔÀÓÀº EnterÅ°¸¦ ´­·¯ ³Ñ±æ ¼öµµ ÀÖ°í ´Ù¸¥ ÀÔ·ÂÀ» ¿ä±¸ ÇÒ ¼ö ÀÖ½À´Ï´Ù."};
+const char* Exit_Text[] = {"Y. Y E S     N. N O","ê²Œì„ì„ ì¢…ë£Œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?"};
+const char* About_Text[] = { "ë§Œë“ ì‚¬ëŒ : ë¬¸ìˆ˜ì² -202327049", "Ver 0.1", "Që¥¼ ëˆŒëŸ¬ ë‚˜ê°€ê¸°" };
+const char* Story_Number = "ì£¼ì˜ì‚¬í•­ ë° ê²Œì„ì˜ í”Œë ˆì´ ë°©ë²•";
+const char* Story_Text1[] = {"ì´ ê²Œì„ì€ ë§¤ìš° ì§€ê·¹íˆ ì£¼ê´€ì ì´ë©° ì‹¤ì œì™€ ë‹¤ë¥¼ ìˆ˜ ìˆìŠµë‹ˆë‹¤. ","ìŠ¤í† ë¦¬ì¤‘ ì¼ë¶€ëŠ” ê°œë°œìì˜ ì‹¤í™”ë¥¼ ë°”íƒ•ìœ¼ë¡œ ë§Œë“¤ì–´ì¡ŒìŠµë‹ˆë‹¤.", "ì´ ê²Œì„ì€ Enterí‚¤ë¥¼ ëˆŒëŸ¬ ë„˜ê¸¸ ìˆ˜ë„ ìˆê³  ë‹¤ë¥¸ ì…ë ¥ì„ ìš”êµ¬ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤."};
 
-void Screen_Text_add(const char* source, int line, int col) { //½ºÅ©¸° º¯¼ö¿¡ source ÅØ½ºÆ®¸¦ Ãß°¡ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+void Screen_Text_add(const char* source, int line, int col) { //ìŠ¤í¬ë¦° ë³€ìˆ˜ì— source í…ìŠ¤íŠ¸ë¥¼ ì¶”ê°€í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     int len = strlen(source), st;
 
     if (col == 0)
@@ -25,7 +25,7 @@ void Screen_Text_add(const char* source, int line, int col) { //½ºÅ©¸° º¯¼ö¿¡ so
     memcpy(Screen_arr + st, source, strlen(source));
 }
 
-void Screen_Clear() {   //   ½ºÅ©¸°À» ÃÊ±âÈ­ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+void Screen_Clear() {   //   ìŠ¤í¬ë¦°ì„ ì´ˆê¸°í™”í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     memset(Screen_arr, '#', sizeof(Screen_arr));
     memset(Screen_arr + Screen_Width, ' ', sizeof(Screen_arr) - Screen_Width * 2);
 
@@ -35,7 +35,7 @@ void Screen_Clear() {   //   ½ºÅ©¸°À» ÃÊ±âÈ­ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
     }
 }
 
-void Title_Screen() {//   Å¸ÀÌÆ² È­¸éÀ» Ãâ·ÂÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
+void Title_Screen() {//   íƒ€ì´í‹€ í™”ë©´ì„ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤.
     Screen_Clear();
     Screen_Text_add(Title, 3, 0);
     Screen_Text_add(Command_Text[0], 12, 37);
@@ -43,7 +43,7 @@ void Title_Screen() {//   Å¸ÀÌÆ² È­¸éÀ» Ãâ·ÂÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù.
     Screen_Text_add(Command_Text[2], 16, 37);
 }
 
-void Game_Start_Screen() { //   Å¸ÀÌÆ²¿¡¼­ Ã³À½ ½ÃÀÛÇÏ´Â Ã¢À» ¶ç¿ì´Â ÇÔ¼öÀÔ´Ï´Ù
+void Game_Start_Screen() { //   íƒ€ì´í‹€ì—ì„œ ì²˜ìŒ ì‹œì‘í•˜ëŠ” ì°½ì„ ë„ìš°ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
     Screen_Clear();
     Screen_Text_add(Story_Number, 2, 3);
     Screen_Text_add(Story_Text1[0], 14, 0);
@@ -52,7 +52,7 @@ void Game_Start_Screen() { //   Å¸ÀÌÆ²¿¡¼­ Ã³À½ ½ÃÀÛÇÏ´Â Ã¢À» ¶ç¿ì´Â ÇÔ¼öÀÔ´Ï´Ù
     Screen_Text_add(About_Text[2], 18, 80);
 }
 
-void About_Screen() {   //      Á¦ÀÛÀÚ Á¤º¸...¹öÀü Á¤º¸...µîµî..
+void About_Screen() {   //      ì œì‘ì ì •ë³´...ë²„ì „ ì •ë³´...ë“±ë“±..
     Screen_Clear();
     Screen_Text_add(Title, 3, 0);
     Screen_Text_add(About_Text[0], 13, 0);
@@ -60,7 +60,7 @@ void About_Screen() {   //      Á¦ÀÛÀÚ Á¤º¸...¹öÀü Á¤º¸...µîµî..
     Screen_Text_add(About_Text[2], 16, 0);
 }
 
-void Exit_Screen() {      //      Exit Ä¿¸Çµå¸¦ ÀÔ·Â¹Ş¾ÒÀ» ½Ã ½ºÅ©¸°¿¡ Ãâ·ÂÇØÁÖ´Â ÇÔ¼öÀÔ´Ï´Ù
+void Exit_Screen() {      //      Exit ì»¤ë§¨ë“œë¥¼ ì…ë ¥ë°›ì•˜ì„ ì‹œ ìŠ¤í¬ë¦°ì— ì¶œë ¥í•´ì£¼ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
     Screen_Clear();
     Screen_Text_add(Exit_Text[1], 3, 0);
     Screen_Text_add(Exit_Text[0], 16, 39);
